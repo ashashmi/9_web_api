@@ -1,0 +1,36 @@
+pip install fastapi uvicorn
+uvicorn iris_api:app --reload    # iris_api is name of our python file, app is name of the FastAPI object in the code
+# In browser, type http://127.0.0.1:8000/docs, this will open the SwaggerUI.
+# Expand POST, click on "Try it out" button, enter the data you want the prediction for, and click Execute button.
+# You can see your output under "Response body" section.
+
+
+
+
+# Host API on heroku
+pip install gunicorn
+touch Procfile
+touch runtime.txt
+touch wsgi.py
+# In "wsgi.py" file write the following code
+# where main is the file containing API code inside app directory 
+from app.main import app
+if __name__ == "__main__":
+        app.run()      
+# add files on github
+$ git init 
+$ git add .
+$ git commit -m "Initial Commit"
+# Login on Heroku
+heroku login
+heroku create my-app
+# Push git code to heroku
+git push heroku master
+# The app will be deployed at http://my-app.herokuapp.com
+
+
+
+
+
+# To make API call, we need to create a file which calls the API using request library.
+pip install requests
